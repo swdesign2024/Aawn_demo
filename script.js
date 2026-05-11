@@ -6,10 +6,10 @@
 window.addEventListener('load', () => {
   const preloader = document.querySelector('.preloader');
   const progress = document.querySelector('.preloader-progress');
-  
+
   // Force progress to 100% on load
-  if(progress) progress.style.width = '100%';
-  
+  if (progress) progress.style.width = '100%';
+
   setTimeout(() => {
     preloader?.classList.add('hidden');
   }, 2500); // Give enough time for the bar animation to feel real
@@ -201,9 +201,9 @@ document.querySelectorAll('.feature-card, .ai-card, .solution-card').forEach(car
     img.addEventListener('click', () => {
       lightbox.classList.add('active');
       lightboxImg.src = img.src;
-      const caption = img.closest('.screenshot-card')?.querySelector('.caption')?.textContent 
-                   || img.closest('.phone-mockup')?.nextElementSibling?.querySelector('h3')?.textContent
-                   || 'معاينة الصورة';
+      const caption = img.closest('.screenshot-card')?.querySelector('.caption')?.textContent
+        || img.closest('.phone-mockup')?.nextElementSibling?.querySelector('h3')?.textContent
+        || 'معاينة الصورة';
       lightboxCaption.textContent = caption;
       document.body.style.overflow = 'hidden'; // Prevent scrolling
     });

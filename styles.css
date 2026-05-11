@@ -83,15 +83,39 @@ body {
   transition: opacity 0.6s, visibility 0.6s;
 }
 .preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-content {
+  text-align: center;
+}
 .preloader-logo {
-  font-size: 3rem; font-weight: 900;
+  font-size: 3.5rem; font-weight: 900;
   background: linear-gradient(135deg, var(--accent), var(--purple));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
   animation: pulse-scale 1.5s infinite;
 }
+.preloader-bar {
+  width: 240px; height: 4px; background: rgba(255,255,255,0.05);
+  border-radius: 100px; margin: 0 auto 1rem; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.preloader-progress {
+  height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--purple));
+  animation: preloader-load 3s ease-in-out forwards;
+}
+.preloader-text {
+  font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;
+  opacity: 0; animation: fade-in 0.5s 0.2s forwards;
+}
+@keyframes preloader-load {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+@keyframes fade-in {
+  to { opacity: 1; }
+}
 @keyframes pulse-scale {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
 }
 
 /* ============ PARTICLE BG ============ */
@@ -338,6 +362,7 @@ section { padding: 6rem 2rem; position: relative; }
 .showcase-section { overflow: hidden; }
 .screenshots-container {
   position: relative; overflow: hidden; padding: 2rem 0;
+  direction: ltr; /* Ensure animation direction is consistent */
 }
 .screenshots-track {
   display: flex; gap: 1.5rem;
@@ -369,6 +394,88 @@ section { padding: 6rem 2rem; position: relative; }
   padding: 1rem; text-align: center;
   font-size: 0.85rem; font-weight: 600;
   color: var(--text-secondary);
+}
+
+/* Specific for Mobile App Screens Section */
+.mobile-screens-gallery .screenshot-card {
+  width: 220px; min-width: 220px;
+}
+.mobile-screens-gallery .screenshot-card img {
+  height: 440px; /* Full phone screen aspect ratio */
+  object-fit: cover;
+}
+
+/* ============ TEAM SECTION ============ */
+.team-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem; margin-top: 2rem;
+}
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.4s;
+}
+.team-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.team-img-wrap {
+  width: 100px; height: 100px; margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(168,85,247,0.1));
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--border);
+  transition: all 0.3s;
+}
+.team-icon {
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.team-card:hover .team-img-wrap {
+  border-color: var(--accent);
+  transform: scale(1.1) rotate(5deg);
+}
+.team-card:hover .team-icon {
+  animation: pulse-icon 1s infinite;
+}
+@keyframes pulse-icon {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.team-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary); }
+.team-card p { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  display: none; position: fixed; z-index: 10000; inset: 0;
+  background: rgba(5,5,16,0.95);
+  backdrop-filter: blur(10px);
+  align-items: center; justify-content: center;
+  flex-direction: column; padding: 2rem;
+}
+.lightbox.active { display: flex; }
+.lightbox-close {
+  position: absolute; top: 20px; right: 30px;
+  color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
+  transition: 0.3s;
+}
+.lightbox-close:hover { color: var(--accent); }
+.lightbox-content {
+  max-width: 90%; max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  transform: scale(0.8); transition: transform 0.3s;
+}
+.lightbox.active .lightbox-content { transform: scale(1); }
+.lightbox-caption {
+  margin-top: 1.5rem; color: #fff; font-weight: 600; text-align: center;
 }
 
 /* ============ MOBILE APP SHOWCASE ============ */
@@ -606,8 +713,23 @@ section { padding: 6rem 2rem; position: relative; }
   font-size: 1.3rem; font-weight: 800;
   background: linear-gradient(135deg, var(--accent), var(--purple));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
+.footer-contact {
+  display: flex; justify-content: center; gap: 2rem;
+  margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-primary);
+  flex-wrap: wrap;
+}
+.footer-contact span {
+  background: var(--bg-card); padding: 0.5rem 1.2rem;
+  border-radius: 100px; border: 1px solid var(--border);
+  transition: 0.3s;
+}
+.contact-link {
+  text-decoration: none;
+  color: inherit;
+}
+.footer-contact span:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ============ REVEAL ANIMATION ============ */
 .reveal {
@@ -637,6 +759,13 @@ section { padding: 6rem 2rem; position: relative; }
   .phone-mockup { width: 240px; }
   section { padding: 4rem 1.2rem; }
   .arch-layer { padding: 1rem; font-size: 0.85rem; }
+  
+  /* Fix animation on mobile - sometimes width: max-content fails if not enough content */
+  .screenshots-track {
+    animation-duration: 25s; /* Faster on mobile for better feel */
+  }
+  
+  .footer-contact { gap: 1rem; flex-direction: column; align-items: center; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 2rem; }

@@ -8,12 +8,19 @@
   <meta name="description"
     content="منصة عاون: حلول رقمية ذكية تعتمد على الذكاء الاصطناعي لتحسين كفاءة المطاعم، إدارة فائض الطعام، وتعزيز الأثر المجتمعي." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
   <!-- PRELOADER -->
   <div class="preloader">
-    <div class="preloader-logo">عاون</div>
+    <div class="preloader-content">
+      <div class="preloader-logo">عاون</div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+      <p class="preloader-text">جاري التحضير... ثوانٍ معدودة.. لتكتشف الفرق بنفسك.</p>
+    </div>
   </div>
 
   <!-- PARTICLES -->
@@ -21,7 +28,7 @@
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <a href="#" class="nav-logo">عاون AAWN</a>
+    <a href="#" class="nav-logo">عاون</a>
     <ul class="nav-links">
       <li><a href="#problem">المشكلة</a></li>
       <li><a href="#solution">الحل</a></li>
@@ -30,6 +37,7 @@
       <li><a href="#ai">الذكاء الاصطناعي</a></li>
       <li><a href="#community">المجتمع </a></li>
       <li><a href="#tech">التقنيات</a></li>
+      <li><a href="#team">الفريق</a></li>
     </ul>
     <a href="#cta" class="nav-cta">ابدأ الآن</a>
     <button class="mobile-toggle" aria-label="Menu">
@@ -46,13 +54,11 @@
         <span class="dot"></span> منصة SaaS — مباشرة 2026
       </div>
       <h1>
-        إعادة تعريف <br /><span class="gradient-text">العمليات <span class="typing-text">الذكية</span></span>
-        للمطاعم
+        حوّل مطعمك إلى منظومة <br /><span class="gradient-text"><span class="typing-text">ذكية</span></span>
       </h1>
       <p>
-        منصة "عاون" هي منظومة رقمية متكاملة مدعومة بالذكاء الاصطناعي، توحد
-        إدارة الطلبات، التحليلات الذكية، الرؤية الحاسوبية، وإدارة فائض الطعام
-        في بيئة تشغيلية واحدة.
+        لا تدير مطعمك فحسب، بل سيطر على نموه مع منصة "عاون". المنظومة الرقمية الوحيدة التي تدمج قوة الذكاء الاصطناعي،
+        تتبع الطلبات اللحظي، وإدارة فائض الطعام في واجهة واحدة احترافية تضمن لك الكفاءة والأثر.
       </p>
       <div class="hero-buttons">
         <a href="#features" class="btn-primary">اكتشف المنصة</a>
@@ -388,7 +394,7 @@
   </section>
 
   <!-- ==================== MOBILE SCREENS GALLERY ==================== -->
-  <section>
+  <section class="mobile-screens-gallery">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-tag">شاشات التطبيق</div>
@@ -554,6 +560,49 @@
               PostgreSQL • تنبيهات Firebase • تخزين الوسائط • Roboflow
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEAM ==================== -->
+  <section id="team">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">فريق العمل</div>
+        <h2 class="section-title">العقول المبدعة <span class="gradient-text">خلف عاون</span></h2>
+        <p class="section-desc">
+          نخبة من المهندسين والمبدعين الذين عملوا بشغف لتحويل هذه الرؤية إلى واقع ملموس.
+        </p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-img-wrap">
+            <i class="fas fa-brain team-icon"></i>
+          </div>
+          <h3>محمد نشوان الفقيه</h3>
+          <p>مطور باك اند - ذكاء اصطناعي</p>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-img-wrap">
+            <i class="fas fa-mobile-screen-button team-icon"></i>
+          </div>
+          <h3>محمد عبده ثابت</h3>
+          <p>مطور موبايل - ذكاء اصطناعي</p>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-img-wrap">
+            <i class="fas fa-laptop-code team-icon"></i>
+          </div>
+          <h3>بشار فيصل محمد</h3>
+          <p>مطور فرونت اند</p>
+        </div>
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-img-wrap">
+            <i class="fas fa-terminal team-icon"></i>
+          </div>
+          <h3>عمرو الرعوي</h3>
+          <p>مطور فرونت اند</p>
         </div>
       </div>
     </div>
@@ -750,11 +799,11 @@
   <!-- ==================== CTA ==================== -->
   <section class="cta-section" id="cta">
     <h2 class="reveal">
-      هل أنت مستعد لتحويل<br /><span class="gradient-text">مطعمك؟</span>
+      هل أنت مستعد لقيادة <br /><span class="gradient-text">ثورة مطعمك؟</span>
     </h2>
     <p class="reveal">
-      انضم إلى مستقبل إدارة المطاعم الذكية. عاون تربط التكنولوجيا بالمجتمع
-      والكفاءة التشغيلية في تجربة واحدة سلسة.
+      انضم الآن إلى مستقبل إدارة المطاعم الاحترافية. مع "عاون"، أنت لا تشتري نظاماً، بل تستثمر في شريك ذكي ينمو معك،
+      يحمي مواردك، ويعزز مكانتك في السوق والمجتمع.
     </p>
     <div class="hero-buttons reveal">
       <a href="#hero" class="btn-primary">ابدأ رحلتك الآن</a>
@@ -769,11 +818,21 @@
       منصة متكاملة بحلول ذكية لتعزيز العمليات التشغيلية والمساهمة المجتمعية
       للمطاعم
     </p>
+    <div class="footer-contact">
+      <a href="https://wa.me/967775971400" target="_blank" class="contact-link"><span>📞 واتساب: 775971400</span></a>
+      <a href="mailto:mabdu8470@gmail.com" class="contact-link"><span>📧 البريد: mabdu8470@gmail.com</span></a>
+    </div>
     <p style="margin-top: 0.8rem; font-size: 0.75rem">
-      © 2026 منصة عاون — تم التطوير كفكرة لمشروع تخرج لجامعة إب كلية الحاسبات • تحت إشراف د. عادل
-      العفيري
+      © 2026 منصة عاون — تم التطوير كفكرة لمشروع تخرج لجامعة إب كلية الحاسبات • تحت إشراف د. عادل العفيري
     </p>
   </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

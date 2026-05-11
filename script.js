@@ -4,9 +4,15 @@
 
 // ============ PRELOADER ============
 window.addEventListener('load', () => {
+  const preloader = document.querySelector('.preloader');
+  const progress = document.querySelector('.preloader-progress');
+  
+  // Force progress to 100% on load
+  if(progress) progress.style.width = '100%';
+  
   setTimeout(() => {
-    document.querySelector('.preloader')?.classList.add('hidden');
-  }, 1200);
+    preloader?.classList.add('hidden');
+  }, 2500); // Give enough time for the bar animation to feel real
 });
 
 // ============ PARTICLES ============
@@ -150,7 +156,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 (function typeEffect() {
   const el = document.querySelector('.typing-text');
   if (!el) return;
-  const words = ['ذكية', 'متكاملة', 'مبتكرة', 'مجتمعية'];
+  const words = ['ذكية', 'متكاملة', 'مبتكرة', 'رائدة', 'مجتمعية'];
   let wordIndex = 0, charIndex = 0, isDeleting = false;
 
   function type() {
@@ -177,5 +183,55 @@ document.querySelectorAll('.feature-card, .ai-card, .solution-card').forEach(car
   });
   card.addEventListener('mouseleave', () => {
     card.style.transform = 'translateY(0) perspective(800px) rotateY(0) rotateX(0)';
+  });
+});
+
+// ============ LIGHTBOX LOGIC ============
+(function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  if (!lightbox) return;
+
+  // Add click event to all relevant images
+  document.querySelectorAll('.screenshot-card img, .phone-frame img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      lightboxImg.src = img.src;
+      const caption = img.closest('.screenshot-card')?.querySelector('.caption')?.textContent 
+                   || img.closest('.phone-mockup')?.nextElementSibling?.querySelector('h3')?.textContent
+                   || 'معاينة الصورة';
+      lightboxCaption.textContent = caption;
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // ESC key to close
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+})();
+
+// ============ INFINITE SCROLL FIX ============
+// Ensure track is long enough by duplicating items if needed
+document.querySelectorAll('.screenshots-track').forEach(track => {
+  const items = Array.from(track.children);
+  // Duplicate items twice to ensure no gaps
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    track.appendChild(clone);
   });
 });
